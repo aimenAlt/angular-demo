@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { CounterComponent } from './counter/counter.component';
 import { FormsModule } from '@angular/forms';
+import { CopyTextComponent } from './copy-text/copy-text.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    CounterComponent
+    CounterComponent,
+    CopyTextComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
