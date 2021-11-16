@@ -8,7 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { CopyTextComponent } from './copy-text/copy-text.component';
 import { LoginComponent } from './login/login.component';
-import { BookListComponent } from './book-list/book-list.component';
+import { BookListComponent } from './book/book-list/book-list.component';
 
 @NgModule({
   declarations: [

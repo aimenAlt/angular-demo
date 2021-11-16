@@ -1,22 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class BookListComponent implements OnInit {
-  flag = false;
-
-  newBook = {
-    id: 0, 
-    bookTitle: "", 
-    bookAuthor: "",
-    bookGenre: "",
-    bookCost: 0,
-    bookImage: "",
-    bookRemoved: false 
-  }
+export class BookService {
 
   allBooks = [
     {
@@ -50,37 +37,19 @@ export class BookListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  getAllBooksService(){
+    return this.allBooks;
   }
 
-  toggleAdd(){
-    if(this.flag){
-      this.flag = false;
-    }else{
-      this.flag = true;
-    }
-  }
+  addBookService(newBook: any){
+    this.allBooks.push(newBook);
+  }  
 
-  removeBook(bookId: number){
-    console.log(bookId);
+  removeBookService(bookId: any){
     this.allBooks.forEach((value, index) => {
       if(this.allBooks[index].id == bookId){
         this.allBooks.splice(index, 1);
       }
     });
-  }
-
-  addBook(){
-    var myBook = {
-      id: this.allBooks[this.allBooks.length-1].id + 1 ,
-      bookTitle: this.newBook.bookTitle, 
-      bookAuthor: this.newBook.bookAuthor,
-      bookGenre: this.newBook.bookGenre,
-      bookCost: this.newBook.bookCost,
-      bookImage: this.newBook.bookImage,
-      bookRemoved: false 
-    }
-       
-    this.allBooks.push(myBook);
   }
 }
