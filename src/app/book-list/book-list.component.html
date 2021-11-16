@@ -1,0 +1,96 @@
+<div class="container">
+    <button 
+        type="button" 
+        class="btn btn-success bm-5"
+        (click)="toggleAdd()">
+        Add a New Book
+    </button>
+    <div *ngIf="flag">
+        <form class="form-inline tm-5">
+            <label for="bookTitle" class="mb-2 mr-sm-2">Title:</label>
+            <input 
+                type="text" 
+                class="form-control mb-2 mr-sm-2" 
+                id="bookTitle" 
+                placeholder="Enter Book Title" 
+                name="BookTitle"
+                [(ngModel)]="newBook.bookTitle">
+           <label for="bookAuthor" class="mb-2 mr-sm-2">Author:</label>
+            <input 
+                type="text" 
+                class="form-control mb-2 mr-sm-2" 
+                id="bookAuthor" 
+                placeholder="Enter Book Author" 
+                name="BookAuthor"
+                [(ngModel)]="newBook.bookAuthor">
+            <label for="bookGenre" class="mb-2 mr-sm-2">Genre:</label>
+            <input 
+                type="text" 
+                class="form-control mb-2 mr-sm-2" 
+                id="bookGenre" 
+                placeholder="Enter Book Genre" 
+                name="BookGenre"
+                [(ngModel)]="newBook.bookGenre">
+            <label for="bookCost" class="mb-2 mr-sm-2">Cost:</label>
+            <input 
+                type="text" 
+                class="form-control mb-2 mr-sm-2" 
+                id="bookCost" 
+                placeholder="Enter Book Cost" 
+                name="BookCost"
+                [(ngModel)]="newBook.bookCost">
+            <label for="bookImage" class="mb-2 mr-sm-2">Image URL:</label>
+            <input 
+                type="text" 
+                class="form-control mb-2 mr-sm-2" 
+                id="bookImage" 
+                placeholder="Enter Book Image URL" 
+                name="BookImage"
+                [(ngModel)]="newBook.bookImage">
+            <button 
+                type="button" 
+                class="btn btn-primary mb-2"
+                (click)="addBook()">ADD</button>
+          </form>  
+    </div>
+    <h2>List of Books</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Book Image</th>
+          <th>Book Title</th>
+          <th>Book Author</th>
+          <th>Book Genre</th>
+          <th>Book Cost</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of allBooks">
+            <td>{{ book.id }}</td>
+            <td><img [src]="book.bookImage" height="50px" width="80px"/></td>
+            <td>{{ book.bookTitle}}</td>
+            <td>{{ book.bookAuthor }}</td>
+            <td>{{ book.bookGenre}}</td>
+            <td>{{ book.bookCost }}</td>
+            <td>
+                <button 
+                    type="button" 
+                    class="btn btn-danger small"
+                    (click)="removeBook(book.id)">
+                    <span class="material-icons">delete</span>
+                </button>
+            </td>
+            <td>
+                <button 
+                    type="button" 
+                    class="btn btn-primary small">
+                    <span class="material-icons">edit</span>
+                </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  ""

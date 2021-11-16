@@ -8,6 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { CopyTextComponent } from './copy-text/copy-text.component';
 import { LoginComponent } from './login/login.component';
+import { BookListComponent } from './book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LoginComponent } from './login/login.component';
     HelloComponent,
     CounterComponent,
     CopyTextComponent,
-    LoginComponent
+    LoginComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
