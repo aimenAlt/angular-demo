@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookService } from '../book.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class BookListComponent implements OnInit {
   }
 
   //dependency injection of BookService
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService, 
+              private router: Router) {
     //with dependency injection, we dont have to do this.
     // we can tell the framework to inject the dependency for us
     //this.bookService = new BookService();
@@ -67,5 +69,9 @@ export class BookListComponent implements OnInit {
     }
        
     this.allBooks.push(myBook);
+  }
+
+  goToEditComponent(){
+    this.router.navigate(['book-update'])
   }
 }

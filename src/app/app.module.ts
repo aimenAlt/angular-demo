@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { CopyTextComponent } from './copy-text/copy-text.component';
 import { LoginComponent } from './login/login.component';
 import { BookListComponent } from './book/book-list/book-list.component';
+import { HeaderComponent } from './header/header.component';
+import { BookEditComponent } from './book/book-edit/book-edit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BookListComponent } from './book/book-list/book-list.component';
     CounterComponent,
     CopyTextComponent,
     LoginComponent,
-    BookListComponent
+    BookListComponent,
+    HeaderComponent,
+    BookEditComponent
   ],
   imports: [
     BrowserModule,
