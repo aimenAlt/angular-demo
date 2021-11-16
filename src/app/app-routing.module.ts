@@ -13,7 +13,7 @@ const routes: Routes = [
   { path:'copy-the-text', component: CopyTextComponent },
   { path:'login', component: LoginComponent },
   { path:'book-info', component:  BookListComponent},
-  { path:'book-update', component:  BookEditComponent},
+  { path:'book-update/:sentBookId', component:  BookEditComponent},
 ];
 
 @NgModule({

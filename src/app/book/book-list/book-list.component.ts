@@ -71,7 +71,8 @@ export class BookListComponent implements OnInit {
     this.allBooks.push(myBook);
   }
 
-  goToEditComponent(){
-    this.router.navigate(['book-update'])
+  goToEditComponent(bookId: any){
+    console.log("logged: " + bookId);
+    this.router.navigate(['book-update', bookId])
   }
 }

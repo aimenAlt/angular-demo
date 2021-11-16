@@ -52,4 +52,30 @@ export class BookService {
       }
     });
   }
+
+  getABookService(bookId: any){
+    var sendBook = {
+        id: 0, 
+          bookTitle: "", 
+          bookAuthor: "",
+          bookGenre: "",
+          bookCost: 0,
+          bookImage: "",
+          bookRemoved: false
+    };
+    this.allBooks.forEach((value, index) => {
+      if(this.allBooks[index].id == bookId){
+        sendBook = this.allBooks[index];
+      }
+    });
+    return sendBook;
+  }
+
+  updateBookService(updateBook: any){
+    this.allBooks.forEach((value, index) => {
+      if(this.allBooks[index].id == updateBook.id){
+         this.allBooks[index] = updateBook;
+      }
+    });
+  }
 }

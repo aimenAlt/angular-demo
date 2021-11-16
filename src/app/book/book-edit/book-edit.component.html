@@ -6,13 +6,11 @@
       <div class="card-body">
         
             <div class="form-group">
-              <label for="bookId">Book ID:</label>
-              <input type="text" 
-                     class="form-control" 
-                     id="bookId"  
-                     name="bookId"
-                     [(ngModel)]="updateBook.id">
-            </div>
+              <label for="bookId">Book ID :</label>
+              <!-- replaced text box for book id with the data being
+                  display directly using string interpolation on the page
+                  so that the user cannot update the primary key-->
+              {{ updateBook.id }}
             <div class="form-group">
             <label for="bookAuthur">Book Authur:</label>
             <input type="text" 
@@ -51,7 +49,6 @@
                 type="button" 
                 class="btn btn-danger mr-5"
                 (click)="editBook()">Update</button>
-          <button type="reset" class="btn btn-danger">Clear</button>
       </div>
      </form>
     </div>
