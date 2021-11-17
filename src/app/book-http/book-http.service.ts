@@ -4,8 +4,7 @@ import { Book } from './book.model';
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
-
+export class BookHttpService {
   allBooks: Book[] = [
     {
     	id: 1, 

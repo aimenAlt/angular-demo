@@ -1,0 +1,56 @@
+<div class="container mb-5">
+    <h2>Book Edit Form</h2>
+    <div class="card mt-5">
+     <form>
+      <div class="card-header bg-warning">EDIT BOOK DETAILS</div>
+      <div class="card-body">
+          
+            <div class="form-group">
+              <label for="bookId">Book ID :</label>
+              <!-- replaced text box for book id with the data being
+                  display directly using string interpolation on the page
+                  so that the user cannot update the primary key-->
+              {{ updateBook.id }}
+            <div class="form-group">
+            <label for="bookAuthur">Book Authur:</label>
+            <input type="text" 
+                    class="form-control" 
+                    id="bookAuthur"  
+                    name="bookAuthor"
+                    [(ngModel)]="updateBook.bookTitle">
+            </div>
+            <div class="form-group">
+            <label for="bookGenre">Book Genre</label>
+            <input type="text" 
+                    class="form-control" 
+                    id="bookGenre"  
+                    name="bookGenre"
+                    [(ngModel)]="updateBook.bookGenre">
+            </div>
+            <div class="form-group">
+            <label for="bookCost">Book Cost:</label>
+            <input type="text" 
+                    class="form-control" 
+                    id="bookCost"  
+                    name="bookCost"
+                    [(ngModel)]="updateBook.bookCost">
+            </div>
+            <div class="form-group">
+            <label for="bookImage">Book Image URL:</label>
+            <input type="text" 
+                    class="form-control" 
+                    id="bookImage"  
+                    name="bookImage"
+                    [(ngModel)]="updateBook.bookImage">
+            </div>
+      </div> 
+      <div class="card-footer bg-warning">
+          <button 
+                type="button" 
+                class="btn btn-danger mr-5"
+                (click)="editBook()">Update</button>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>

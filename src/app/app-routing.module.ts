@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookEditHttpComponent } from './book-http/book-edit-http/book-edit-http.component';
+import { BookListHttpComponent } from './book-http/book-list-http/book-list-http.component';
 import { BookEditComponent } from './book/book-edit/book-edit.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { CopyTextComponent } from './copy-text/copy-text.component';
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path:'login', component: LoginComponent },
   { path:'book-info', component:  BookListComponent},
   { path:'book-update/:sentBookId', component:  BookEditComponent},
+  { path:'book-info-http', component:  BookListHttpComponent},
+  { path:'book-update-http/:sentBookId', component:  BookEditHttpComponent}
 ];
 
 @NgModule({

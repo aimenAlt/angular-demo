@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { HeaderComponent } from './header/header.component';
 import { BookEditComponent } from './book/book-edit/book-edit.component';
+import { BookListHttpComponent } from './book-http/book-list-http/book-list-http.component';
+import { BookEditHttpComponent } from './book-http/book-edit-http/book-edit-http.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BookEditComponent } from './book/book-edit/book-edit.component';
     LoginComponent,
     BookListComponent,
     HeaderComponent,
-    BookEditComponent
+    BookEditComponent,
+    BookListHttpComponent,
+    BookEditHttpComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,3 +36,4 @@ import { BookEditComponent } from './book/book-edit/book-edit.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

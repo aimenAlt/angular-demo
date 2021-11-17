@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookHttpService } from '../book-http.service';
 import { Book } from '../book.model';
 
-import { BookService } from '../book.service';
-
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  selector: 'app-book-list-http',
+  templateUrl: './book-list-http.component.html',
+  styleUrls: ['./book-list-http.component.css']
 })
-export class BookListComponent implements OnInit {
+export class BookListHttpComponent implements OnInit {
+
   flag: boolean = false;
 
   allBooks: Book[] = [];
@@ -32,7 +32,7 @@ export class BookListComponent implements OnInit {
   }
 
   //dependency injection of BookService
-  constructor(private bookService: BookService, 
+  constructor(private bookHttpService: BookHttpService, 
               private router: Router) {
     //with dependency injection, we dont have to do this.
     // we can tell the framework to inject the dependency for us
@@ -44,7 +44,7 @@ export class BookListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.allBooks = this.bookService.getAllBooksService();
+    this.allBooks = this.bookHttpService.getAllBooksService();
   }
 
   toggleAdd(){
@@ -56,7 +56,7 @@ export class BookListComponent implements OnInit {
   }
 
   removeBook(bookId: number){
-    this.bookService.removeBookService(bookId);    
+    this.bookHttpService.removeBookService(bookId);    
   }
 
   addBook(){
@@ -75,6 +75,6 @@ export class BookListComponent implements OnInit {
 
   goToEditComponent(bookId: any){
     console.log("logged: " + bookId);
-    this.router.navigate(['book-update', bookId])
+    this.router.navigate(['book-update-http', bookId])
   }
 }
