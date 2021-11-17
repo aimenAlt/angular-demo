@@ -1,81 +1,38 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Book } from './book.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookHttpService {
-  allBooks: Book[] = [
-    {
-    	id: 1, 
-        bookTitle: "Harry Potter and the Order of Phoenix", 
-        bookAuthor: "J.K.Rowling",
-        bookGenre: "Fiction",
-        bookCost: 20,
-        bookImage: "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
-        bookRemoved: false 
-      },
-      { 
-    	id: 2, 
-        bookTitle: "Harry Potter and the Prizoner of Azkaban", 
-        bookAuthor: "J.K.Rowling",
-        bookGenre: "Fiction",
-        bookCost: 25,
-        bookImage: "https://images.unsplash.com/photo-1618666012174-83b441c0bc76?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
-        bookRemoved: false 
-      },
-      { 
-    	id: 3, 
-        bookTitle: "Harry Potter and the Deathly Hallows", 
-        bookAuthor: "J.K.Rowling",
-        bookGenre: "Fiction",
-        bookCost: 10,
-        bookImage: "https://images.unsplash.com/photo-1611676279444-5577698aa13c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80",
-        bookRemoved: false 
-      }
-    ];
+  
+  baseUrl = "http://localhost:3000/books";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllBooksService(): Book[]{
-    return this.allBooks;
+  getAllBooksService(): Observable<Book[]>{
+    //need to consume the get end point "http://localhost:3000/books"
+    // specify the return type as Observable with the generic type
+    // also specify the generic type near the get function because we 
+        //cannot have different generic types
+    return this.http.get<Book[]>(this.baseUrl);
   }
 
-  addBookService(newBook: Book): void{
-    this.allBooks.push(newBook);
+  addBookService(newBook: Book): Observable<Book>{
+    return this.http.post<Book>(this.baseUrl, newBook);
   }  
 
-  removeBookService(bookId: number): void{
-    this.allBooks.forEach((value, index) => {
-      if(this.allBooks[index].id == bookId){
-        this.allBooks.splice(index, 1);
-      }
-    });
+  removeBookService(bookId: number): Observable<Book>{
+    return this.http.delete<Book>(this.baseUrl+"/"+bookId);
   }
 
-  getABookService(bookId: number): Book{
-    var sendBook: Book = {
-        id: 0, 
-          bookTitle: "", 
-          bookAuthor: "",
-          bookGenre: "",
-          bookCost: 0,
-          bookImage: "",
-          bookRemoved: false
-    };
-    this.allBooks.forEach((value, index) => {
-      if(this.allBooks[index].id == bookId){
-        sendBook = this.allBooks[index];
-      }
-    });
-    return sendBook;
+  getABookService(bookId: number): Observable<Book>{
+    return this.http.get<Book>(this.baseUrl+"/"+bookId);
   }
 
-  updateBookService(updateBook: Book): void{
-    this.allBooks.forEach((value, index) => {
-      if(this.allBooks[index].id == updateBook.id){
-         this.allBooks[index] = updateBook;
-      }
-    });
+  updateBookService(updateBook: Book): Observable<Book>{
+    return this.http.put<Book>(this.baseUrl+"/"+updateBook.id, updateBook);
   }
 }
