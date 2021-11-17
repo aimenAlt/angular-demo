@@ -13,13 +13,6 @@ export class BookListHttpComponent implements OnInit {
   flag: boolean = false;
 
   allBooks: Book[] = [];
-  //java syntax
-  //BookService bookService;
-
-  //typescript syntax
-  // commented out this line since i used private
-  // while injecting BookService
-  //bookService: BookService;
 
   newBook: Book = {
     id: 0, 
@@ -31,20 +24,24 @@ export class BookListHttpComponent implements OnInit {
     bookRemoved: false 
   }
 
-  //dependency injection of BookService
   constructor(private bookHttpService: BookHttpService, 
               private router: Router) {
-    //with dependency injection, we dont have to do this.
-    // we can tell the framework to inject the dependency for us
-    //this.bookService = new BookService();
 
-    // commented out this line since i used private
-        // while injecting BookService
-    //this.bookService = bookService;
    }
 
   ngOnInit(): void {
-    this.allBooks = this.bookHttpService.getAllBooksService();
+    this.bookHttpService.getAllBooksService().subscribe(
+      (response)=> {
+        console.log(response);
+        this.allBooks = response;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+
+    //
+    console.log("after calling getAllBookSService()");
   }
 
   toggleAdd(){

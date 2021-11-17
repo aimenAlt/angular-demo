@@ -26,7 +26,7 @@ export class BookEditHttpComponent implements OnInit {
   ngOnInit(): void {
     var receivedBookId: any = this.activatedRoute.snapshot.paramMap.get("sentBookId");
     console.log(receivedBookId);
-    this.updateBook = this.bookService.getABookService(receivedBookId);
+    this.bookService.getABookService(receivedBookId);
   }
 
   editBook(){
