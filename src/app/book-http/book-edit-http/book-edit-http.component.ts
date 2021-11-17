@@ -26,12 +26,27 @@ export class BookEditHttpComponent implements OnInit {
   ngOnInit(): void {
     var receivedBookId: any = this.activatedRoute.snapshot.paramMap.get("sentBookId");
     console.log(receivedBookId);
-    this.bookService.getABookService(receivedBookId);
+    this.bookService.getABookService(receivedBookId).subscribe(
+      (response) => {
+        this.updateBook = response;
+      },
+      (error)=> {
+        console.log(error);
+      }
+    );
   }
 
   editBook(){
-    this.bookService.updateBookService(this.updateBook);
-    this.router.navigate(['book-info-http']);
+    this.bookService.updateBookService(this.updateBook).subscribe(
+      (response) => {
+        console.log(response);
+        this.router.navigate(['book-info-http']);
+      },
+      (error)=> {
+        console.log(error);
+      }
+    );
+    
 
   }
 }

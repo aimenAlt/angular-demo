@@ -30,6 +30,13 @@ export class BookListHttpComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.loadBooks();
+
+    //
+    console.log("after calling getAllBookSService()");
+  }
+
+  loadBooks(){
     this.bookHttpService.getAllBooksService().subscribe(
       (response)=> {
         console.log(response);
@@ -39,9 +46,6 @@ export class BookListHttpComponent implements OnInit {
         console.log(error);
       }
     );
-
-    //
-    console.log("after calling getAllBookSService()");
   }
 
   toggleAdd(){
@@ -53,21 +57,25 @@ export class BookListHttpComponent implements OnInit {
   }
 
   removeBook(bookId: number){
-    this.bookHttpService.removeBookService(bookId);    
+    this.bookHttpService.removeBookService(bookId).subscribe(
+      (response) => {
+        console.log(response);
+        this.loadBooks();
+      },
+      (error) => console.log(error)
+    )   
   }
 
   addBook(){
-    var myBook: Book = {
-      id: this.allBooks[this.allBooks.length-1].id + 1 ,
-      bookTitle: this.newBook.bookTitle, 
-      bookAuthor: this.newBook.bookAuthor,
-      bookGenre: this.newBook.bookGenre,
-      bookCost: this.newBook.bookCost,
-      bookImage: this.newBook.bookImage,
-      bookRemoved: false 
-    }
-       
-    this.allBooks.push(myBook);
+    this.bookHttpService.addBookService(this.newBook).subscribe(
+      (response) => {
+        console.log(response);
+        this.loadBooks();
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
   goToEditComponent(bookId: any){
