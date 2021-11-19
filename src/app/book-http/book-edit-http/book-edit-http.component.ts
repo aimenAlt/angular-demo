@@ -46,7 +46,10 @@ export class BookEditHttpComponent implements OnInit {
         console.log(error);
       }
     );
-    
+  }
 
+  logTitleChange(bTitle: any){
+    console.log("Title template variable:");
+    console.log(bTitle);
   }
 }

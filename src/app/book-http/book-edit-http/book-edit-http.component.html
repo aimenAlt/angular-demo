@@ -1,7 +1,7 @@
 <div class="container mb-5">
     <h2>Book Edit Form</h2>
     <div class="card mt-5">
-     <form>
+     <form #myForm="ngForm" (submit)="editBook()">
       <div class="card-header bg-warning">EDIT BOOK DETAILS</div>
       <div class="card-body">
           
@@ -12,12 +12,29 @@
                   so that the user cannot update the primary key-->
               {{ updateBook.id }}
             <div class="form-group">
-            <label for="bookAuthur">Book Authur:</label>
+            <label for="bookTitle">Book Title:</label>
+            <input type="text" 
+                class="form-control" 
+                id="bookTitle"  
+                name="bookTitle"
+                #bTitle="ngModel"
+                (change)="logTitleChange(bTitle)"
+                required
+                [(ngModel)]="updateBook.bookTitle">
+            <div 
+                *ngIf='bTitle.invalid' 
+                class="text-danger small" >
+                Book Title is required!
+            </div>
+            </div>
+            <div class="form-group">
+            <label for="bookAuthor">Book Author:</label>
             <input type="text" 
                     class="form-control" 
-                    id="bookAuthur"  
+                    id="bookAuthor"  
                     name="bookAuthor"
-                    [(ngModel)]="updateBook.bookTitle">
+                    required
+                    [(ngModel)]="updateBook.bookAuthor">
             </div>
             <div class="form-group">
             <label for="bookGenre">Book Genre</label>
@@ -25,6 +42,7 @@
                     class="form-control" 
                     id="bookGenre"  
                     name="bookGenre"
+                    required
                     [(ngModel)]="updateBook.bookGenre">
             </div>
             <div class="form-group">
@@ -33,6 +51,7 @@
                     class="form-control" 
                     id="bookCost"  
                     name="bookCost"
+                    required
                     [(ngModel)]="updateBook.bookCost">
             </div>
             <div class="form-group">
@@ -41,14 +60,15 @@
                     class="form-control" 
                     id="bookImage"  
                     name="bookImage"
+                    required
                     [(ngModel)]="updateBook.bookImage">
             </div>
       </div> 
       <div class="card-footer bg-warning">
           <button 
-                type="button" 
-                class="btn btn-danger mr-5"
-                (click)="editBook()">Update</button>
+                type="submit" 
+                [disabled]='!myForm.valid'
+                class="btn btn-danger mr-5">Update</button>
       </div>
     </div>
     </form>

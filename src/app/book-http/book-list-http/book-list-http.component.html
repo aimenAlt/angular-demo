@@ -5,8 +5,8 @@
         (click)="toggleAdd()">
         Add a New Book
     </button>
-    <div *ngIf="flag">
-        <form class="form-inline tm-5">
+    <div *ngIf="flag" >
+        <form #addForm="ngForm" class="form-inline tm-5" (submit)="addBook()">
             <label for="bookTitle" class="mb-2 mr-sm-2">Title:</label>
             <input 
                 type="text" 
@@ -14,7 +14,12 @@
                 id="bookTitle" 
                 placeholder="Enter Book Title" 
                 name="BookTitle"
+                required
+                #bTitle="ngModel"
                 [(ngModel)]="newBook.bookTitle">
+                <span 
+                    *ngIf="bTitle.invalid && bTitle.touched" 
+                    class="text-danger small">Book title required!</span>
            <label for="bookAuthor" class="mb-2 mr-sm-2">Author:</label>
             <input 
                 type="text" 
@@ -22,7 +27,10 @@
                 id="bookAuthor" 
                 placeholder="Enter Book Author" 
                 name="BookAuthor"
+                required
+                #bAuthor="ngModel"
                 [(ngModel)]="newBook.bookAuthor">
+                <span *ngIf="bAuthor.invalid && bAuthor.touched" class="text-danger small">Book Author required!</span>
             <label for="bookGenre" class="mb-2 mr-sm-2">Genre:</label>
             <input 
                 type="text" 
@@ -30,7 +38,10 @@
                 id="bookGenre" 
                 placeholder="Enter Book Genre" 
                 name="BookGenre"
+                required
+                #bGenre="ngModel"
                 [(ngModel)]="newBook.bookGenre">
+                <span *ngIf="bGenre.invalid && bGenre.touched" class="text-danger small">Book Genre required!</span>
             <label for="bookCost" class="mb-2 mr-sm-2">Cost:</label>
             <input 
                 type="text" 
@@ -38,7 +49,10 @@
                 id="bookCost" 
                 placeholder="Enter Book Cost" 
                 name="BookCost"
+                required
+                #bCost="ngModel"
                 [(ngModel)]="newBook.bookCost">
+                <span *ngIf="bCost.invalid && bCost.touched" class="text-danger small">Book cost required!</span>
             <label for="bookImage" class="mb-2 mr-sm-2">Image URL:</label>
             <input 
                 type="text" 
@@ -46,11 +60,14 @@
                 id="bookImage" 
                 placeholder="Enter Book Image URL" 
                 name="BookImage"
+                required
+                #bImage="ngModel"
                 [(ngModel)]="newBook.bookImage">
+                <span *ngIf="bImage.invalid && bImage.touched" class="text-danger small">Book Image required!</span>
             <button 
-                type="button" 
-                class="btn btn-primary mb-2"
-                (click)="addBook()">ADD</button>
+                type="submit" 
+                [disabled]="!addForm.valid"
+                class="btn btn-primary mb-2">ADD</button>
           </form>  
     </div>
     <h2>List of Books</h2>
