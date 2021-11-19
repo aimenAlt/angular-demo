@@ -68,28 +68,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let book of allBooks">
-            <td>{{ book.id }}</td>
-            <td><img [src]="book.bookImage" height="50px" width="80px"/></td>
-            <td>{{ book.bookTitle}}</td>
-            <td>{{ book.bookAuthor }}</td>
-            <td>{{ book.bookGenre}}</td>
-            <td>{{ book.bookCost }}</td>
-            <td>
-                <button 
-                    type="button" 
-                    class="btn btn-danger small"
-                    (click)="removeBook(book.id)">
-                    <span class="material-icons">delete</span>
-                </button>
-            </td>
-            <td>
-                <button 
-                    type="button" 
-                    class="btn btn-primary small"
-                    (click)="goToEditComponent(book.id)">
-                    <span class="material-icons">edit</span>
-                </button>
-            </td>
+          <app-book-item 
+            [bookData]="book" 
+            (deleteEmitter)="removeParent($event)"
+            (editEmitter)="goToEditParent($event)"></app-book-item>
         </tr>
       </tbody>
     </table>

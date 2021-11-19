@@ -5,13 +5,13 @@
       <div class="card-body">
         <form>
             <div class="form-group">
-              <label for="userName">User Name:</label>
+              <label for="userName">User ID:</label>
               <input type="text" 
                      class="form-control" 
                      id="userName" 
                      placeholder="Enter user name" 
                      name="userName"
-                     [(ngModel)]="userName">
+                     [(ngModel)]="newUser.userId">
             </div>
             <div class="form-group">
               <label for="pwd">Password:</label>
@@ -20,7 +20,7 @@
                      id="pwd" 
                      placeholder="Enter password" 
                      name="pswd"
-                     [(ngModel)]="password">
+                     [(ngModel)]="newUser.userPassword">
             </div>
           </form>
       </div> 

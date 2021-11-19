@@ -89,7 +89,7 @@
             <td><img [src]="book.bookImage" height="50px" width="80px"/></td>
             <td>{{ book.bookTitle}}</td>
             <td>{{ book.bookAuthor }}</td>
-            <td>{{ book.bookGenre}}</td>
+            <td>{{ book.bookGenre | uppercase}}</td>
             <td>{{ book.bookCost }}</td>
             <td>
                 <button 

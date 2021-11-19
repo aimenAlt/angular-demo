@@ -8,12 +8,13 @@ import { HelloComponent } from './hello/hello.component';
 import { CounterComponent } from './counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { CopyTextComponent } from './copy-text/copy-text.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './users/login/login.component';  
 import { BookListComponent } from './book/book-list/book-list.component';
 import { HeaderComponent } from './header/header.component';
 import { BookEditComponent } from './book/book-edit/book-edit.component';
 import { BookListHttpComponent } from './book-http/book-list-http/book-list-http.component';
 import { BookEditHttpComponent } from './book-http/book-edit-http/book-edit-http.component';
+import { BookItemComponent } from './book/book-list/book-item/book-item.component';
   
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BookEditHttpComponent } from './book-http/book-edit-http/book-edit-http
     BookEditComponent,
     BookListHttpComponent,
     BookEditHttpComponent,
+    BookItemComponent,
   ],
   imports: [
     BrowserModule,

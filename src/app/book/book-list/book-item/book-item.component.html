@@ -1,0 +1,22 @@
+<td>{{ bookData.id }}</td>
+<td><img [src]="bookData.bookImage" height="50px" width="80px" /></td>
+<td>{{ bookData.bookTitle}}</td>
+<td>{{ bookData.bookAuthor }}</td>
+<td>{{ bookData.bookGenre}}</td>
+<td>{{ bookData.bookCost }}</td>
+<td>
+    <button 
+        type="button" 
+        class="btn btn-danger small" 
+        (click)="removeBook(bookData.id)">
+        <span class="material-icons">delete</span>
+    </button>
+</td>
+<td>
+    <button 
+        type="button" 
+        class="btn btn-primary small" 
+        (click)="goToEditComponent(bookData.id)">
+        <span class="material-icons">edit</span>
+    </button>
+</td>

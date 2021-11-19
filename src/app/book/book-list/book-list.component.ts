@@ -55,7 +55,8 @@ export class BookListComponent implements OnInit {
     }
   }
 
-  removeBook(bookId: number){
+  removeParent(bookId: any){
+    console.log("parent : " + bookId);
     this.bookService.removeBookService(bookId);    
   }
 
@@ -73,7 +74,7 @@ export class BookListComponent implements OnInit {
     this.allBooks.push(myBook);
   }
 
-  goToEditComponent(bookId: any){
+  goToEditParent(bookId: any){
     console.log("logged: " + bookId);
     this.router.navigate(['book-update', bookId])
   }
