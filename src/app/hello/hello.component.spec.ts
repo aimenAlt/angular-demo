@@ -14,6 +14,7 @@ describe('HelloComponent', () => {
   });
 
   beforeEach(() => {
+    //fixture is not equal to new HelloComponent()
     fixture = TestBed.createComponent(HelloComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -22,4 +23,5 @@ describe('HelloComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

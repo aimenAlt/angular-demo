@@ -9,18 +9,19 @@ import { CounterComponent } from './counter/counter.component';
 import { HelloComponent } from './hello/hello.component';
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
+import { AdminGuard } from './users/admin.guard';
 
-const routes: Routes = [
+const routes: Routes = [  
   { path:'', component: LoginComponent },
-  { path:'hello', component: HelloComponent },
-  { path:'counter', component: CounterComponent },
-  { path:'copy-the-text', component: CopyTextComponent },
+  { path:'hello', component: HelloComponent, canActivate: [AdminGuard] },
+  { path:'counter', component: CounterComponent, canActivate: [AdminGuard] },
+  { path:'copy-the-text', component: CopyTextComponent, canActivate: [AdminGuard] },
   { path:'login', component: LoginComponent },
   { path:'logout', component: LogoutComponent },
-  { path:'book-info', component:  BookListComponent},
-  { path:'book-update/:sentBookId', component:  BookEditComponent},
-  { path:'book-info-http', component:  BookListHttpComponent},
-  { path:'book-update-http/:sentBookId', component:  BookEditHttpComponent}
+  { path:'book-info', component:  BookListComponent, canActivate: [AdminGuard]},
+  { path:'book-update/:sentBookId', component:  BookEditComponent, canActivate: [AdminGuard]},
+  { path:'book-info-http', component:  BookListHttpComponent, canActivate: [AdminGuard]},
+  { path:'book-update-http/:sentBookId', component:  BookEditHttpComponent, canActivate: [AdminGuard]}
 ];
 
 @NgModule({

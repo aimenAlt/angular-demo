@@ -14,6 +14,8 @@ export class BookListHttpComponent implements OnInit {
 
   allBooks: Book[] = [];
 
+  errorMsg: string = '';
+
   newBook: Book = {
     id: 0, 
     bookTitle: "", 
@@ -30,6 +32,7 @@ export class BookListHttpComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    //this.errorMsg = '';
     this.loadBooks();
 
     //
@@ -44,6 +47,7 @@ export class BookListHttpComponent implements OnInit {
       },
       (error)=>{
         console.log(error);
+        this.errorMsg = 'There was some internal error! Please try again later!';
       }
     );
   }
