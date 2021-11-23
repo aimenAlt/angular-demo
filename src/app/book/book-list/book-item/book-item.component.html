@@ -2,7 +2,7 @@
 <td><img [src]="bookData.bookImage" height="50px" width="80px" /></td>
 <td>{{ bookData.bookTitle}}</td>
 <td>{{ bookData.bookAuthor }}</td>
-<td>{{ bookData.bookGenre}}</td>
+<td>{{ bookData.bookGenre | uppercase}}</td>
 <td>{{ bookData.bookCost }}</td>
 <td>
     <button 

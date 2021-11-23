@@ -48,6 +48,7 @@ export class BookListHttpComponent implements OnInit {
       (error)=>{
         console.log(error);
         this.errorMsg = 'There was some internal error! Please try again later!';
+        console.log(this.errorMsg);
       }
     );
   }
